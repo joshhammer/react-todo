@@ -1,0 +1,14 @@
+.todo-wrapper {
+    width: 80%;
+    height: 100%;
+    background: lightblue;
+}
+
+.todos-list {
+    list-style-type: none;
+}
+
+.completed-todo {
+    text-decoration: line-through;
+}
+
