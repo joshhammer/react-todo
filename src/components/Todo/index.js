@@ -32,23 +32,24 @@ class Todo extends React.Component {
     }
 
     addTodo = (event) => {
-        event.preventDefault();
-        this.props.dispatch(addTodoAction(this.state.currentTodo))
-        this.setState({
-            currentTodo: {
-                ...this.state.currentTodo,
-                title: '',
-                id: this.todo_id += 1
-            }
-        })
+        if(this.state.currentTodo.title) {
+            event.preventDefault();
+            this.props.dispatch(addTodoAction(this.state.currentTodo))
+            this.setState({
+                currentTodo: {
+                    ...this.state.currentTodo,
+                    title: '',
+                    id: this.todo_id += 1
+                }
+            })
+        }
+        else { alert('Please add something..') }
     }
 
     deleteTodo = (id) => {
-        const newTodos = this.props.todos.filter(todo => {
-            if (todo.id !== id) {
-                return todo
-            }
-        })
+        const newTodos = this.props.todos
+        .filter(todo => todo.id !== id)
+        .map(todo => todo)
         this.props.dispatch(deleteTodo(newTodos))
     }
 
