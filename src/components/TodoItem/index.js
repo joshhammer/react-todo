@@ -4,7 +4,6 @@ import '../Todo/index.scss'
 const TodoItem = (props) => {
     const toggleComplete = () => {
         props.killTodo(props.todo.id)
-        console.log(props.todo)
     }
 
     return(

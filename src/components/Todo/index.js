@@ -1,5 +1,8 @@
 import React from 'react'
 import List from '../List'
+import { connect } from 'react-redux'
+import { addTodoAction } from '../../store/actions/addTodo'
+import { updateTodos } from '../../store/actions/updateTodos'
 
 import './index.scss'
 
@@ -14,19 +17,11 @@ class Todo extends React.Component {
                 title: '',
                 completed: false,
             },
-            todos: [
-                {
-                    id: 1,
-                    title: 'my_first_todo',
-                    completed: false,
-                },
-                {
-                    id: 2,
-                    title: 'my_second_todo',
-                    completed: false,
-                }
-            ]
         }
+    }
+
+    componentDidMount(){
+        console.log('PROPS: ', this.props)
     }
 
     handleChange = (event) => {
@@ -41,18 +36,18 @@ class Todo extends React.Component {
 
     addTodo = (event) => {
         event.preventDefault();
+        this.props.dispatch(addTodoAction(this.state.currentTodo))
         this.setState({
-            todos: [...this.state.todos, this.state.currentTodo],
             currentTodo: {
                 ...this.state.currentTodo,
                 title: '',
-                id: this.todo_id+=1
+                id: this.todo_id += 1
             }
         })
     }
 
     toggleCompleted = (id) => {
-        const newTodos = this.state.todos.map(todo => {
+        const newTodos = this.props.todos.map(todo => {
             if(todo.id === id){
                 todo.completed = !todo.completed
                 return todo
@@ -60,9 +55,7 @@ class Todo extends React.Component {
             return todo
         })
         console.log(newTodos)
-        this.setState({
-            todos: newTodos,
-        })
+        this.props.dispatch(updateTodos(newTodos))
     }
 
     render() {
@@ -75,17 +68,17 @@ class Todo extends React.Component {
                         onChange={this.handleChange} value={this.state.currentTodo.title} />
                         <button className='add-todo-btn' type='submit'>Add Todo</button>
                     </form>
-                    <List todos={this.state.todos} killTodo={this.toggleCompleted}/>
-                    {/* <ul className='todos-list'>
-                        {
-                            this.state.todos.map((todo, index) => {
-                                return <li key={index} onClick={this.toggleCompleted}>{todo.title}</li>
-                            })
-                        }
-                    </ul> */}
+                    <List todos={this.props.todos} killTodo={this.toggleCompleted}/>
                 </div>
             </div>
         )
     }
 }
-export default Todo
+
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos.todos
+    }
+}
+
+export default connect(mapStateToProps)(Todo)
