@@ -11,6 +11,7 @@ const List = (props) => {
                     todo={todo} 
                     key={index}
                     killTodo={props.killTodo}
+                    removeTodo={props.removeTodo}
                     />
                 })
             }

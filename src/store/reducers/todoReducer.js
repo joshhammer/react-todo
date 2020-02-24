@@ -14,7 +14,6 @@ const initialState = {
 }
 
 export const todos = (state=initialState, action) => {
-    console.log('hello from state: ', state)
     if(action.type === 'ADD_TODO') {
         return {
             ...state,
@@ -22,6 +21,12 @@ export const todos = (state=initialState, action) => {
         }
     }
     if(action.type === 'UPDATE_TODOS') {
+        return {
+            ...state,
+            todos: [...action.payload]
+        }
+    }
+    if(action.type === 'DELETE_TODO') {
         return {
             ...state,
             todos: [...action.payload]

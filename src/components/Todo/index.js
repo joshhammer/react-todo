@@ -3,6 +3,7 @@ import List from '../List'
 import { connect } from 'react-redux'
 import { addTodoAction } from '../../store/actions/addTodo'
 import { updateTodos } from '../../store/actions/updateTodos'
+import { deleteTodo } from '../../store/actions/deleteTodo'
 
 import './index.scss'
 
@@ -18,10 +19,6 @@ class Todo extends React.Component {
                 completed: false,
             },
         }
-    }
-
-    componentDidMount(){
-        console.log('PROPS: ', this.props)
     }
 
     handleChange = (event) => {
@@ -46,6 +43,15 @@ class Todo extends React.Component {
         })
     }
 
+    deleteTodo = (id) => {
+        const newTodos = this.props.todos.filter(todo => {
+            if (todo.id !== id) {
+                return todo
+            }
+        })
+        this.props.dispatch(deleteTodo(newTodos))
+    }
+
     toggleCompleted = (id) => {
         const newTodos = this.props.todos.map(todo => {
             if(todo.id === id){
@@ -54,22 +60,21 @@ class Todo extends React.Component {
             }
             return todo
         })
-        console.log(newTodos)
         this.props.dispatch(updateTodos(newTodos))
     }
 
     render() {
         return(
             <div className='todo-wrapper'>
-                <div className='todo-container'>
-                    <h1>React Todo App</h1>
+                <div className='header'>
+                    <h1 className='app-title'>React Todo App</h1>
                     <form onSubmit={this.addTodo}>
                         <input className='add-todo-field' type="text" placeholder='Add a new todo' 
                         onChange={this.handleChange} value={this.state.currentTodo.title} />
-                        <button className='add-todo-btn' type='submit'>Add Todo</button>
+                        <button className='add-todo-btn' type='submit'>+</button>
                     </form>
-                    <List todos={this.props.todos} killTodo={this.toggleCompleted}/>
                 </div>
+                    <List todos={this.props.todos} killTodo={this.toggleCompleted} removeTodo={this.deleteTodo}/>
             </div>
         )
     }

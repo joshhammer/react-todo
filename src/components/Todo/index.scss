@@ -1,14 +1,89 @@
 .todo-wrapper {
     width: 80%;
+    max-width: 1000px;
     height: 100%;
-    background: lightblue;
+    background: rgb(238, 238, 238);
+    padding: 2rem;
+    overflow: scroll;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.app-title {
+    font-weight: 300;
+}
+
+
+.add-todo-field {
+    border: none;
+    height: 30px;
+    width: 250px;
+    font-size: 1rem;
+    padding-left: .5rem;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    &:focus {
+        outline: none;
+    }
+}
+
+.add-todo-btn {
+    margin-left: 1rem;
+    border: none;
+    height: 30px;
+    width: 50px;
+    color: white;
+    background: black;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 2px 2px 3px black;
+    &:focus {
+        outline: none;
+    }
+    &:active {
+        box-shadow: 0 0 1px black;
+    }
 }
 
 .todos-list {
     list-style-type: none;
+    padding: 1rem 2rem;
+    overflow: scroll;
+    & li {
+    }
+}
+
+.list-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 0 0 .5rem 0;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    .delete-btn {
+        color: white;
+        background: black;
+        height: 30px;
+        width: 50px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 3px black;
+        &:focus {
+            outline: none;
+        }
+    }
 }
 
 .completed-todo {
     text-decoration: line-through;
 }
+
+
 
