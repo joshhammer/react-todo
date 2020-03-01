@@ -22,7 +22,9 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  background: black;
+  align-items: center;
+  background: linear-gradient(135deg, rgb(92, 71, 125), rgb(42, 43, 96));
+  font-family: 'Raleway', sans-serif;
 }
 
 code {

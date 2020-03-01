@@ -2,14 +2,24 @@ const initialState = {
     todos: [
         {
             id: 1,
-            title: 'my_first_todo',
+            title: 'remember to forget Cynthia',
             completed: false,
         },
         {
             id: 2,
-            title: 'my_second_todo',
+            title: `book table at Dorsia's`,
             completed: false,
-        }
+        },
+        {
+            id: 3,
+            title: `take pills`,
+            completed: false,
+        },
+        {
+            id: 4,
+            title: `return videotapes`,
+            completed: false,
+        },
     ]
 }
 

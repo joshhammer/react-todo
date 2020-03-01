@@ -1,88 +1,121 @@
 .todo-wrapper {
-    width: 80%;
-    max-width: 1000px;
-    height: 100%;
-    background: rgb(238, 238, 238);
+    width: 40%;
+    max-width: 600px;
+    height: 80%;
+    border-radius: 25px;
+    background: rgb(220, 223, 230);
     padding: 2rem;
-    overflow: scroll;
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    border-bottom: 1px solid black;
+    height: 150px;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
+    background: linear-gradient(135deg, rgb(92, 71, 125), rgb(42, 43, 96));
 }
 
 .app-title {
+    font-size: 1.75rem;
     font-weight: 300;
+    width: 100%;
+    text-align: left;
+    color: white;
+}
+
+.add-todo-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 
 .add-todo-field {
     border: none;
     height: 30px;
-    width: 250px;
+    width: 70%;
     font-size: 1rem;
     padding-left: .5rem;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px gray;
     &:focus {
         outline: none;
     }
 }
 
 .add-todo-btn {
-    margin-left: 1rem;
-    border: none;
-    height: 30px;
-    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2.5rem;
+    height: 40px;
+    width: 40px;
     color: white;
-    background: black;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-shadow: 2px 2px 3px black;
+    border: none;
+    background: rgb(252, 91, 100);
+    border-radius: 50%;
+    font-size: 1.5rem;
     &:focus {
         outline: none;
     }
     &:active {
         box-shadow: 0 0 1px black;
     }
+    &:hover {
+        background: rgb(247, 147, 152);
+    }
+    & svg {
+        color: white;
+        height: 20px;
+        width: 20px;
+    }
 }
 
 .todos-list {
     list-style-type: none;
-    padding: 1rem 2rem;
     overflow: scroll;
-    & li {
-    }
+    height: 300px;
 }
 
 .list-element {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid black;
-    padding: 0 0 .5rem 0;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: .95rem;
+    padding: 0 1.5rem 0 1rem;
+    margin-bottom: .15rem;
+    background: white;
+    height: 50px;
+    & input {
+        margin-right: 1rem;
+    }
     .delete-btn {
-        color: white;
-        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(252, 91, 100);
         height: 30px;
-        width: 50px;
-        border-radius: 5px;
-        box-shadow: 2px 2px 3px black;
+        width: 30px;
+        border-radius: 50%;
+        margin-left: auto;
+        & svg {
+            height: 15px;
+            width: 15px;
+            color: white;
+        }
         &:focus {
             outline: none;
         }
         &:active {
         box-shadow: 0 0 1px black;
-    }
+        }
+        &:hover {
+        background: rgb(71, 71, 71);
+        }
     }
 }
+
 
 .completed-todo {
     text-decoration: line-through;
