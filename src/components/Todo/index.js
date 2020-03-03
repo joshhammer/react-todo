@@ -32,18 +32,15 @@ class Todo extends React.Component {
     }
 
     addTodo = (event) => {
-        if(this.state.currentTodo.title) {
-            event.preventDefault();
-            this.props.dispatch(addTodoAction(this.state.currentTodo))
-            this.setState({
-                currentTodo: {
-                    ...this.state.currentTodo,
-                    title: '',
-                    id: this.todo_id += 1
-                }
-            })
-        }
-        else { alert('Please add something..') }
+        event.preventDefault();
+        this.props.dispatch(addTodoAction(this.state.currentTodo))
+        this.setState({
+            currentTodo: {
+                ...this.state.currentTodo,
+                title: '',
+                id: this.todo_id += 1
+            }
+        })
     }
 
     deleteTodo = (id) => {
@@ -70,7 +67,7 @@ class Todo extends React.Component {
                 <div className='header'>
                     <h1 className='app-title'>a todo list with React & Redux</h1>
                     <form className='add-todo-form' onSubmit={this.addTodo}>
-                        <input className='add-todo-field' type="text" placeholder='Add a new todo' 
+                        <input className='add-todo-field' type="text" placeholder='Add a new todo..' 
                         onChange={this.handleChange} value={this.state.currentTodo.title} />
                         <button className='add-todo-btn' type='submit'>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" className="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>

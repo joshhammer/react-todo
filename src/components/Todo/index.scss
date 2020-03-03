@@ -37,7 +37,7 @@
     border: none;
     height: 30px;
     width: 70%;
-    font-size: 1rem;
+    font-size: .95rem;
     padding-left: .5rem;
     border-radius: 5px;
     &:focus {
@@ -88,6 +88,7 @@
     margin-bottom: .15rem;
     background: white;
     height: 50px;
+    /* Hide the browser's default checkbox */
     & input {
         position: absolute;
         opacity: 0;
@@ -96,7 +97,7 @@
         width: 0;
     }
     & li {
-        margin-left: 2rem;
+        margin-left: 1rem;
     }
     .delete-btn {
         display: flex;
@@ -119,15 +120,26 @@
             box-shadow: 0 0 1px black;
         }
         &:hover {
-            background: rgb(71, 71, 71);
+            background: rgb(247, 147, 152);
         }
     }
 }
 
+.container {
+    display: block;
+    position: relative;
+    padding-left: 0px;
+//   margin-bottom: 12px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+/* Create a custom checkbox */
 .custom-checkbox {
     position: absolute;
-    top: 15px;
-    left: 15px;
     height: 20px;
     width: 20px;
     border-radius: 3px;
@@ -137,21 +149,25 @@
     }
 }
 
+/* When the checkbox is checked, add a salmon background */
 .container input:checked ~ .custom-checkbox {
   background: rgb(252, 91, 100);
 }
 
-.custom-checkbox:after {
+/* Create the checkmark/indicator (hidden when not checked) */
+.custom-checkbox::after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.container input:checked ~ .custom-checkbox:after {
+/* Show the checkmark when checked */
+.container input:checked ~ .custom-checkbox::after {
   display: block;
 }
 
-.container .custom-checkbox:after {
+/* Style the checkmark/indicator */
+.custom-checkbox::after {
   left: 7px;
   top: 4px;
   width: 4px;
